@@ -1,22 +1,20 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png" /> -->
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-    </div>
+    <HeaderComponent />
     <router-view></router-view>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   </div>
 </template>
 
 <script>
+import HeaderComponent from "@/layout/HeaderComponent.vue";
 // import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "app",
   components: {
-    //HelloWorld,
+    HeaderComponent,
   },
 };
 </script>
