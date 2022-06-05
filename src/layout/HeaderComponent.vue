@@ -6,7 +6,7 @@ export default class HeaderComponent extends Vue {
   activeIndex: string = "1";
   menuIsActive: boolean = false;
 
-  lang: string = "en";
+  lang: string = "ua";
 
   menuNav() {
     this.menuIsActive = !this.menuIsActive;
@@ -40,7 +40,7 @@ export default class HeaderComponent extends Vue {
             ><router-link to="/">Home</router-link></el-menu-item
           >
           <el-menu-item index="2"
-            ><router-link to="/">Info</router-link></el-menu-item
+            ><router-link to="/info">Info</router-link></el-menu-item
           >
           <el-menu-item index="3"
             ><router-link to="/about">About</router-link></el-menu-item

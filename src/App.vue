@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png" /> -->
-    <HeaderComponent />
+    <HeaderComponent
+      v-if="$route.name !== 'Login' && $route.name !== 'page404'"
+    />
     <router-view></router-view>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   </div>

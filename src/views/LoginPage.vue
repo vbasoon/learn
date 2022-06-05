@@ -74,43 +74,45 @@ export default class LoginPage extends Vue {
 </script>
 
 <template>
-  <el-row type="flex" justify="center">
-    <el-col :span="6">
-      <div>
-        <h1>Login</h1>
-        <el-form
-          :model="ruleForm"
-          status-icon
-          :rules="rules"
-          ref="ruleForm"
-          label-width="120px"
-          class="demo-ruleForm"
-        >
-          <el-form-item label="Email" prop="email">
-            <el-input
-              type="text"
-              v-model="ruleForm.email"
-              autocomplete="off"
-            ></el-input>
-          </el-form-item>
-          <el-form-item label="Password" prop="password">
-            <el-input
-              type="password"
-              v-model="ruleForm.password"
-              autocomplete="off"
-            ></el-input>
-          </el-form-item>
+  <div class="section">
+    <el-row type="flex" justify="center">
+      <el-col :span="6">
+        <div>
+          <h1>Login</h1>
+          <el-form
+            :model="ruleForm"
+            status-icon
+            :rules="rules"
+            ref="ruleForm"
+            label-width="120px"
+            class="demo-ruleForm"
+          >
+            <el-form-item label="Email" prop="email">
+              <el-input
+                type="text"
+                v-model="ruleForm.email"
+                autocomplete="off"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="Password" prop="password">
+              <el-input
+                type="password"
+                v-model="ruleForm.password"
+                autocomplete="off"
+              ></el-input>
+            </el-form-item>
 
-          <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')"
-              >Submit</el-button
-            >
-            <el-button @click="resetForm('ruleForm')">Reset</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
-    </el-col>
-  </el-row>
+            <el-form-item>
+              <el-button type="primary" @click="submitForm('ruleForm')"
+                >Submit</el-button
+              >
+              <el-button @click="resetForm('ruleForm')">Reset</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <style lang="scss" scoped>

@@ -3,26 +3,48 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import AboutView from "../views/AboutView.vue";
 import LoginPage from "../views/LoginPage.vue";
+import InfoView from "../views/InfoView.vue";
+import PageNotFound from "../views/PageNotFound.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "home",
-    component: Home,
-    meta: { requiresAuth: true },
+    redirect: "/en",
   },
   {
-    path: "/login",
-    name: "Login",
-    component: LoginPage,
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: AboutView,
-    meta: { requiresAuth: true },
+    path: "/:lang",
+    children: [
+      {
+        path: "/login",
+        name: "Login",
+        component: LoginPage,
+      },
+      {
+        path: "/",
+        name: "home",
+        component: Home,
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/info",
+        name: "Info",
+        component: InfoView,
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/about",
+        name: "About",
+        component: AboutView,
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "*",
+        name: "page404",
+        component: PageNotFound,
+      },
+    ],
   },
 ];
 
@@ -32,6 +54,11 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  let language = to.params.lang;
+  if (!language) {
+    language = "en";
+  }
+  i18n.locale = "en";
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     const authUser = JSON.parse(
       window.localStorage.getItem("currentUser") || "{}"
