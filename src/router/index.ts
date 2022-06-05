@@ -10,41 +10,32 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    redirect: "/en",
+    path: "/login",
+    name: "Login",
+    component: LoginPage,
   },
   {
-    path: "/:lang",
-    children: [
-      {
-        path: "/login",
-        name: "Login",
-        component: LoginPage,
-      },
-      {
-        path: "/",
-        name: "home",
-        component: Home,
-        meta: { requiresAuth: true },
-      },
-      {
-        path: "/info",
-        name: "Info",
-        component: InfoView,
-        meta: { requiresAuth: true },
-      },
-      {
-        path: "/about",
-        name: "About",
-        component: AboutView,
-        meta: { requiresAuth: true },
-      },
-      {
-        path: "*",
-        name: "page404",
-        component: PageNotFound,
-      },
-    ],
+    path: "/",
+    name: "home",
+    component: Home,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/info",
+    name: "Info",
+    component: InfoView,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: AboutView,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "*",
+    name: "page404",
+    component: PageNotFound,
   },
 ];
 
@@ -58,7 +49,7 @@ router.beforeEach((to, from, next) => {
   if (!language) {
     language = "en";
   }
-  i18n.locale = "en";
+  /*i18n.locale = "en"; */
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     const authUser = JSON.parse(
       window.localStorage.getItem("currentUser") || "{}"
