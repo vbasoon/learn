@@ -3,7 +3,10 @@ import { Vue, Component } from "vue-property-decorator";
 
 @Component({})
 export default class HeaderComponent extends Vue {
-  menuIsActive = false;
+  activeIndex: string = "1";
+  menuIsActive: boolean = false;
+
+  lang: string = "en";
 
   menuNav() {
     this.menuIsActive = !this.menuIsActive;
@@ -14,45 +17,129 @@ export default class HeaderComponent extends Vue {
 <template>
   <el-header height="auto">
     <el-row type="flex" class="row-bg" justify="space-between">
-      <el-col :span="12"
+      <el-col class="header-logo" :span="12"
         ><div>
           <img
-            width="100"
+            width="50"
             alt="Vue logo"
             src="@/assets/img/header-logo.png"
           /></div
       ></el-col>
-      <el-col :span="12"
-        ><div>
-          <el-button plain size="mini" class="mobile-nav" @click="menuNav">
-            <i class="el-icon-menu"></i>
-            <i class="el-icon-close"></i>
-          </el-button>
+      <el-col class="header-menu" :span="12">
+        <el-button plain size="mini" class="mobile-nav" @click="menuNav">
+          <i v-if="menuIsActive" class="el-icon-close"></i>
+          <i v-else class="el-icon-menu"></i>
+        </el-button>
 
-          <el-menu
-            :default-active="activeIndex"
-            mode="horizontal"
-            :class="{ '': !menuIsActive, isOpen: menuIsActive }"
+        <el-menu
+          :default-active="activeIndex"
+          mode="horizontal"
+          :class="{ '': !menuIsActive, isOpen: menuIsActive }"
+        >
+          <el-menu-item index="1"
+            ><router-link to="/">Home</router-link></el-menu-item
           >
-            <el-menu-item index="1"
-              ><router-link to="/">Home</router-link></el-menu-item
-            >
-            <el-menu-item index="3"
-              ><router-link to="/about">About</router-link></el-menu-item
-            >
-            <el-menu-item index="4"></el-menu-item>
-          </el-menu></div
-      ></el-col>
+          <el-menu-item index="2"
+            ><router-link to="/">Info</router-link></el-menu-item
+          >
+          <el-menu-item index="3"
+            ><router-link to="/about">About</router-link></el-menu-item
+          >
+        </el-menu>
+        <div style="margin-top: 20px">
+          <el-radio-group v-model="lang" size="mini">
+            <el-radio-button class="isActive" label="ua">Укр</el-radio-button>
+            <el-radio-button label="en">En</el-radio-button>
+          </el-radio-group>
+          <el-button class="logout-btn" type="info" size="mini"
+            ><i class="el-icon-upload el-icon-right"
+              ><span class="text-block">Logout</span></i
+            ></el-button
+          >
+        </div>
+      </el-col>
     </el-row>
   </el-header>
 </template>
 
 <style lang="scss" scoped>
 .el-header {
-  background-color: #fff;
   padding: 0;
   position: relative;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
-  z-index: 1;
+}
+
+.header-menu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.el-menu--horizontal.el-menu {
+  border: none;
+  margin-top: 5px;
+  .el-menu-item {
+    background: transparent;
+    a {
+      font-size: 16px;
+      text-decoration: none;
+    }
+    &.isActive {
+      border: none;
+    }
+  }
+  @media (max-width: 768px) {
+    display: none;
+    opacity: 0;
+    background: #585757;
+  }
+  &.isOpen {
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    display: block;
+    opacity: 1;
+  }
+}
+
+.mobile-nav {
+  display: none;
+  margin: 20px 10px 0 0;
+  font-size: 14px;
+  height: 29px;
+  padding: 0 5px;
+  @media (max-width: 768px) {
+    display: block;
+    margin-right: 0;
+  }
+}
+
+.header-logo {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.el-radio-group {
+  margin-right: 1rem;
+  height: 29px;
+  @media (max-width: 480px) {
+    margin-right: 0;
+  }
+}
+
+.el-radio-button {
+  height: auto;
+}
+
+.logout-btn {
+  margin-right: 1rem;
+  font-size: 14px;
+  height: 29px;
+  @media (max-width: 480px) {
+    margin-right: 0;
+    .text-block {
+      display: none;
+    }
+  }
 }
 </style>
