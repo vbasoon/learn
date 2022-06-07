@@ -1,6 +1,13 @@
 {
     "message": "Це українська версія сайту!",
     "hello": "{msg}, world!",
-    "hello0": "{0} world!"
-
+    "hello0": "{0} world!",
+    "menu": {
+      "home": "Головна",
+      "info": "Інфа",
+      "about": "Про нас"
+    },
+    "buttons": {
+      "btn-logout": "Вихід"
+    }
   }
