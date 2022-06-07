@@ -1,0 +1,7 @@
+{
+  "message": "This is an English version",
+  "hello": "{msg} world",
+  "hello0": "{0} world!",
+  "car": "car | cars",
+  "apple": "no apples | one apple | {count} apples"
+}
