@@ -75,7 +75,11 @@ export default class HeaderComponent extends Vue {
 <style lang="scss" scoped>
 .el-header {
   padding: 0;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  //border-bottom: #585757 0.5px solid;
+  background-color: #fff;
 }
 
 .header-menu {

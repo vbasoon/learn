@@ -11,7 +11,8 @@
     "footer-text": "Всі права захищені",
     "article": {
       "destination-title": "Місце",
-      "added-title": "Автор",
-      "view-more": "Детально..."
+      "added-title": "Автор :",
+      "view-more": "Детально...",
+      "view-back": "Повернутися до списку"
     }
   }

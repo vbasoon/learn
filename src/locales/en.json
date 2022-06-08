@@ -10,7 +10,8 @@
   "footer-text": "All rights reserved",
   "article": {
     "destination-title": "Destination",
-    "added-title": "Added",
-    "view-more": "More..."
+    "added-title": "Added by",
+    "view-more": "More...",
+    "view-back": "Back to list"
   }
 }

@@ -28,4 +28,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.el-main {
+  padding-top: 80px;
+}
+</style>

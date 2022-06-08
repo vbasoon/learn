@@ -35,7 +35,7 @@ export default class ArticleView extends Vue {
           <strong> {{ item.destination }} </strong>
         </el-col>
         <el-col :span="5"
-          >{{ $t("article.added-title") }} :<strong>{{ item.autor }}</strong>
+          >{{ $t("article.added-title") }} <strong>{{ item.autor }}</strong>
         </el-col>
         <el-col :span="5"> {{ item.postTime }} </el-col>
       </el-row>

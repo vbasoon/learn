@@ -28,7 +28,7 @@ export default class FooterComponent extends Vue {}
 <style lang="scss" scoped>
 .el-footer {
   background-color: #9b9b9b;
-  padding: 130px 0;
+  padding: 60px 0;
   text-align: center;
   position: relative;
   box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.12);
