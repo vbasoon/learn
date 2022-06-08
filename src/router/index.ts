@@ -5,6 +5,7 @@ import AboutView from "../views/AboutView.vue";
 import LoginPage from "../views/LoginPage.vue";
 import InfoView from "../views/InfoView.vue";
 import PageNotFound from "../views/PageNotFound.vue";
+import Article from "../views/ArticlePage.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,12 @@ const routes: Array<RouteConfig> = [
     path: "/",
     name: "home",
     component: Home,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/post/:id",
+    name: "Article",
+    component: Article,
     meta: { requiresAuth: true },
   },
   {

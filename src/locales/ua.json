@@ -1,7 +1,5 @@
 {
-    "message": "Це українська версія сайту!",
-    "hello": "{msg}, world!",
-    "hello0": "{0} world!",
+  "empty-page": "Новини відсутні",
     "menu": {
       "home": "Головна",
       "info": "Інфа",
@@ -9,5 +7,11 @@
     },
     "buttons": {
       "btn-logout": "Вихід"
+    },
+    "footer-text": "Всі права захищені",
+    "article": {
+      "destination-title": "Місце",
+      "added-title": "Автор",
+      "view-more": "Детально..."
     }
   }

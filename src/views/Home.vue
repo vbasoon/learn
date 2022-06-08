@@ -1,25 +1,64 @@
 <template>
   <div class="home">
-    <section class="section">
-      <h1>This is a Home Page</h1>
-      <p>{{ $t("message") }}</p>
-      <p>{{ $t("hello", { msg: "hello" }) }}</p>
-      <p>{{ $t("hello0", ["Моє ім'я", "hello"]) }}</p>
-      <p>{{ $tc("car", 1) }}</p>
-      <p>{{ $tc("car", 2) }}</p>
-      <p>{{ $tc("apple", 0) }}</p>
-      <p>{{ $tc("apple", 1) }}</p>
-      <p>{{ $tc("apple", 10, { count: testCount }) }}</p>
-      <p>{{ $d(new Date(), "short") }}</p>
-    </section>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
+    <div v-if="articles">
+      <ArticleView
+        v-for="item in articles"
+        :key="item.id"
+        :item="item"
+      ></ArticleView>
+    </div>
+    <div v-else>{{ $t("empty-page") }}</div>
   </div>
 </template>
 
 <script>
 import { Vue, Component } from "vue-property-decorator";
-@Component({})
+import { short, long } from "../locales/dateTimeFormats.js";
+import ArticleView from "../components/ArticleView.vue";
+
+@Component({
+  name: "Home",
+  components: {
+    ArticleView,
+  },
+})
 export default class Home extends Vue {
+  articles = [
+    {
+      id: 1,
+      title: "Test",
+      destination: "Europe",
+      autor: "Added by John Williams Doe",
+      postTime: "January 01, 2018",
+      image: "https://picsum.photos/600/300?random=1",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.",
+    },
+    {
+      id: 2,
+      title: "Test2",
+      destination: "Europe",
+      autor: "Added by John Williams Doe2",
+      postTime: "January 01, 2018",
+      image: "https://picsum.photos/600/300?random=2",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.",
+    },
+    {
+      id: 3,
+      title: "Test3",
+      destination: "Europe",
+      autor: "Added by John Williams Doe 3",
+      postTime: "January 01, 2018",
+      image: "https://picsum.photos/600/300?random=1",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis viverra sapien. Mauris vehicula est vitae sodales aliquam. Aliquam sem nisl, pretium et justo vitae, sagittis dictum nunc. Nulla facilisi. Sed ultrices nisl lorem, in consequat urna facilisis a. Sed eu hendrerit risus.",
+    },
+  ];
+  data() {
+    return {
+      name: "Vlad",
+      email: "vbasoon@gmail.com",
+    };
+  }
+
   testCount = 20;
 }
 </script>

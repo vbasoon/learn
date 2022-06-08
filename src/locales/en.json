@@ -1,14 +1,16 @@
 {
-  "message": "This is an English version",
-  "hello": "{msg} world",
-  "hello0": "{0} world!",
-  "car": "car | cars",
-  "apple": "no apples | one apple | {count} apples",
+  "empty-page": "Page Empty",
   "menu": {
     "home": "Home",
     "info": "Info",
     "about": "About" },
   "buttons": {
     "btn-logout": "Logout"
+  },
+  "footer-text": "All rights reserved",
+  "article": {
+    "destination-title": "Destination",
+    "added-title": "Added",
+    "view-more": "More..."
   }
 }

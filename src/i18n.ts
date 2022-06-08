@@ -3,6 +3,24 @@ import VueI18n, { LocaleMessages } from "vue-i18n";
 
 Vue.use(VueI18n);
 
+const dateTimeFormats = {
+  en: {
+    short: {
+      year: "2-digit",
+      month: "short",
+      day: "2-digit",
+    },
+    long: {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      weekday: "long",
+      hour: "numeric",
+      minute: "numeric",
+    },
+  },
+};
+
 function loadLocaleMessages(): LocaleMessages {
   const locales = require.context(
     "./locales",
@@ -19,24 +37,6 @@ function loadLocaleMessages(): LocaleMessages {
   });
   return messages;
 }
-
-const dateTimeFormats = {
-  en: {
-    short: {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    },
-    long: {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      weekday: "long",
-      hour: "numeric",
-      minute: "numeric",
-    },
-  },
-};
 
 export default new VueI18n({
   locale: "en",
