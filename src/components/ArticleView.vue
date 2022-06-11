@@ -5,6 +5,8 @@ import { Item } from "../types";
 @Component
 export default class ArticleView extends Vue {
   @Prop() item?: Item;
+  @Prop({ default: "" }) search?: string;
+  @Prop({ required: true, default: true }) viewMode?: BooleanConstructor;
 
   truncate(str: string, n: number) {
     return str.length > n ? `${str.substr(0, n - 1)} ...` : str;
@@ -20,32 +22,44 @@ export default class ArticleView extends Vue {
 </script>
 
 <template>
-  <el-row type="flex" justify="center">
-    <el-col :xs="23" :sm="22" :md="20" :lg="18" :xl="18" class="post-view">
+  <el-row type="flex" justify="center" :class="viewMode ? '' : 'block-el-row'">
+    <el-col
+      :xs="23"
+      :sm="22"
+      :md="20"
+      :lg="viewMode ? 18 : 22"
+      :xl="viewMode ? 18 : 22"
+      class="post-view"
+      v-if="item.title === search || search.length === 0"
+    >
       <el-row type="flex" justify="center" class="post-title">
-        <el-col :span="12">
+        <el-col :span="viewMode ? 12 : 24">
           <h3 class="title">
             {{ item.title }}
           </h3>
         </el-col>
       </el-row>
-      <el-row type="flex" justify="center" class="post-subtitle">
-        <el-col :span="5">
+      <el-row
+        type="flex"
+        justify="center"
+        :class="viewMode ? 'post-subtitle-view' : 'post-subtitle-block'"
+      >
+        <el-col :span="viewMode ? 5 : 24">
           {{ $t("article.destination-title") }} :
           <strong> {{ item.destination }} </strong>
         </el-col>
-        <el-col :span="5"
+        <el-col :span="viewMode ? 5 : 24"
           >{{ $t("article.added-title") }} <strong>{{ item.autor }}</strong>
         </el-col>
-        <el-col :span="5"> {{ item.postTime }} </el-col>
+        <el-col :span="viewMode ? 5 : 24"> {{ item.postTime }} </el-col>
       </el-row>
       <el-row type="flex" justify="center" class="post-image">
-        <el-col :span="16"
+        <el-col :span="viewMode ? 16 : 24"
           ><img :src="item.image" alt="article-image" width="100%" />
         </el-col>
       </el-row>
       <el-row type="flex" justify="center" class="post-text">
-        <el-col :span="12"
+        <el-col :span="viewMode ? 12 : 22"
           ><p>{{ truncate(item.text, 200) }}</p>
         </el-col>
       </el-row>
@@ -101,5 +115,21 @@ export default class ArticleView extends Vue {
 .post-control {
   margin: 15px 0;
   text-align: center;
+}
+
+.block-el-row {
+  width: 50%;
+  @media (max-width: 480  px) {
+    width: 100%;
+  }
+}
+
+.post-subtitle-view {
+}
+.post-subtitle-block {
+  flex-direction: column;
+  div {
+    padding: 5px;
+  }
 }
 </style>

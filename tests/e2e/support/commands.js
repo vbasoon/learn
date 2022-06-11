@@ -23,3 +23,13 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("setLocalStorage", () => {
+  cy.window().then((window) => {
+    const token = {
+      accessToken:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVmxhZCBCYXNvb24iLCJhZG1pbiI6InRydWUiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTczODI0OTAzM30.A3M-By8SHfd6r3q-_tvjJhjHlc2T_M-WnSMXVTl6kGc",
+    };
+    window.localStorage.setItem("currentUser", JSON.stringify(token));
+  });
+});

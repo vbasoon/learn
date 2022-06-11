@@ -13,5 +13,7 @@
     "added-title": "Added by",
     "view-more": "More...",
     "view-back": "Back to list"
-  }
+  },
+  "search": "Search",
+  "tooltip": "Change view"
 }

@@ -7,6 +7,10 @@ export default class HeaderComponent extends Vue {
   menuIsActive: boolean = false;
 
   lang: string = "ua";
+  logout() {
+    window.localStorage.clear();
+    this.$router.push("login");
+  }
 
   menuNav() {
     this.menuIsActive = !this.menuIsActive;
@@ -41,27 +45,34 @@ export default class HeaderComponent extends Vue {
           :class="{ '': !menuIsActive, isOpen: menuIsActive }"
         >
           <el-menu-item index="1"
-            ><router-link to="/">{{
+            ><router-link data-test="home" to="/">{{
               $t("menu.home")
             }}</router-link></el-menu-item
           >
           <el-menu-item index="2"
-            ><router-link to="/info">{{
+            ><router-link to="/info" data-test="info">{{
               $t("menu.info")
             }}</router-link></el-menu-item
           >
           <el-menu-item index="3"
-            ><router-link to="/about">{{
+            ><router-link data-test="about" to="/about">{{
               $t("menu.about")
             }}</router-link></el-menu-item
           >
         </el-menu>
         <div style="margin-top: 20px">
           <el-radio-group :change="switchLang()" v-model="lang" size="mini">
-            <el-radio-button class="isActive" label="ua">Укр</el-radio-button>
-            <el-radio-button label="en">En</el-radio-button>
+            <el-radio-button class="isActive" label="ua" data-test="ua"
+              >Укр</el-radio-button
+            >
+            <el-radio-button label="en" data-test="en">En</el-radio-button>
           </el-radio-group>
-          <el-button class="logout-btn" type="info" size="mini"
+          <el-button
+            @click="logout"
+            class="logout-btn"
+            type="info"
+            size="mini"
+            data-test="logout"
             ><i class="el-icon-upload el-icon-right"
               ><span class="text-block">{{ $t("buttons.btn-logout") }}</span></i
             ></el-button
@@ -75,7 +86,7 @@ export default class HeaderComponent extends Vue {
 <style lang="scss" scoped>
 .el-header {
   padding: 0;
-  position: fixed;
+  //position: fixed;
   width: 100%;
   z-index: 10;
   //border-bottom: #585757 0.5px solid;

@@ -1,18 +1,21 @@
 <template>
   <el-row type="flex" justify="center" class="article-page">
     <el-col :xs="23" :sm="22" :md="20" :lg="16" :xl="16">
+      <div>
+        {{ fromApi }}
+      </div>
       <h1>
-        {{ content.title }}
+        {{ articleById.title }}
       </h1>
-      <img :src="content.image" alt="article image" />
-      <p>{{ content.text }}</p>
+      <img :src="articleById.image" alt="article image" />
+      <p>{{ articleById.text }}</p>
       <el-divider></el-divider>
       <el-row type="flex" justify="space-between">
         <el-col :span="12" class="article-info text-left">
-          {{ content.autor }}
+          {{ articleById.autor }}
         </el-col>
         <el-col :span="12" class="article-info text-right">
-          {{ content.postTime }}
+          {{ articleById.postTime }}
         </el-col>
       </el-row>
       <el-row type="flex" justify="center" class="article-control">
@@ -28,17 +31,26 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { namespace } from "vuex-class";
 
-@Component
+const Articles = namespace("Articles");
+
+@Component({ name: "ArticlePage" })
 export default class ArticlePage extends Vue {
-  content = "";
+  @Articles.Getter getById: any;
+  @Articles.State fromApi: any;
+  @Articles.Action fetchApi: any;
 
-  created() {
-    this.content = this.$route.params.item;
+  get articleById() {
+    return this.getById(this.$route.params.id);
   }
 
   backToList() {
     this.$router.go(-1);
+  }
+
+  created() {
+    this.fetchApi();
   }
 }
 </script>
