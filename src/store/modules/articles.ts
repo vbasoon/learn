@@ -41,7 +41,7 @@ const mutations = {
 
 const getters = {
   getById: (state, getters) => (id) => {
-    return state.articles.find((item) => item.id === id);
+    return state.articles.find((item) => item.id === parseInt(id));
   },
 };
 

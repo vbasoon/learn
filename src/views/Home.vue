@@ -48,13 +48,6 @@ export default class Home extends Vue {
     this.viewMode = !this.viewMode;
   }
 
-  data() {
-    return {
-      name: "Vlad",
-      email: "vbasoon@gmail.com",
-    };
-  }
-
   testCount = 20;
 }
 </script>

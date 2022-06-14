@@ -1,9 +1,7 @@
 <template>
   <el-row type="flex" justify="center" class="article-page">
     <el-col :xs="23" :sm="22" :md="20" :lg="16" :xl="16">
-      <div>
-        {{ fromApi }}
-      </div>
+      <div>{{ fromApi }}</div>
       <h1>
         {{ articleById.title }}
       </h1>

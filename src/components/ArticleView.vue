@@ -6,7 +6,7 @@ import { Item } from "../types";
 export default class ArticleView extends Vue {
   @Prop() item?: Item;
   @Prop({ default: "" }) search?: string;
-  @Prop({ required: true, default: true }) viewMode?: BooleanConstructor;
+  @Prop({ required: true, default: true }) viewMode?: boolean;
 
   truncate(str: string, n: number) {
     return str.length > n ? `${str.substr(0, n - 1)} ...` : str;
